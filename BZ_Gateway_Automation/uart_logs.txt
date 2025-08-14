@@ -1,0 +1,11 @@
+>> Sending: id
+<< Response:
+Device ID: 52328298625871380479
+[15:55:12.667,968] <debug> scControl: Upload timer expired and S&F data is available.
+[15:55:12.667,968] <debug> scControl: SCCONTROLLER: SCC_EVENT_IDLE [scController_run]
+[15:55:12.667,968] <debug> scControl: SCCONTROLLER: SCC_EVENT_IDLE [scController_run]
+>> Sending: pass @@fT27u6kWATxGqW
+<< Response:
+
+Password Valid, Security access level 2 granted.
+[✗] Expected string NOT found: 'vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv'

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="7.333" timestamp="2025-08-14T15:00:14.357842" hostname="MSI"><testcase classname="B2_Sensor.Gateway_can_start_DFU_with_B2_Sensor" name="test_GatewayCanStartDFUWithB2Sensor" time="6.164"><failure message="AssertionError: assert False&#10; +  where False = send_cli_command(Serial&lt;id=0x1ca0a2f9ed0, open=True&gt;(port='COM9', baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=2, xonxoff=False, rtscts=False, dsrdtr=False), 'pass @@fT27u6kWATxGqW', wait=2, expected='vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv')">serial_connection = Serial&lt;id=0x1ca0a2f9ed0, open=True&gt;(port='COM9', baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=2, xonxoff=False, rtscts=False, dsrdtr=False)
+record_property = &lt;function record_property.&lt;locals&gt;.append_property at 0x000001CA09E7D440&gt;
+
+    def test_GatewayCanStartDFUWithB2Sensor(serial_connection, record_property):
+        ser = serial_connection
+    
+        response = send_cli_command(ser, 'id', wait=2)
+        match = re.search(r'\d{20}', response)
+        assert match, "Device ID not found in 'id' response"
+        device_id = match.group(0)
+        assert device_id in DEVICE_CREDENTIALS, f"Device ID {device_id} not in credentials list"
+        password = DEVICE_CREDENTIALS[device_id]
+    
+        # Initial configuration with expected responses
+&gt;       assert send_cli_command(ser, f'pass {password}', wait=2,
+                                expected="vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
+E       AssertionError: assert False
+E        +  where False = send_cli_command(Serial&lt;id=0x1ca0a2f9ed0, open=True&gt;(port='COM9', baudrate=115200, bytesize=8, parity='N', stopbits=1, timeout=2, xonxoff=False, rtscts=False, dsrdtr=False), 'pass @@fT27u6kWATxGqW', wait=2, expected='vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv')
+
+B2_Sensor\Gateway_can_start_DFU_with_B2_Sensor.py:114: AssertionError</failure></testcase></testsuite></testsuites>
